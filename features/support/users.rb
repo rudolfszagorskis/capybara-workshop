@@ -14,6 +14,16 @@ module Users
         @login_user_negative ||= User.new(email: 'aaaa@aaaamailinator.com', password: 'aaa')
         @login_user_negative
     end
+
+    #def Users.signup_without_email
+    #    @signup_user ||= User.new(email: '', password: 'passworddemo')
+    #    @signup_user
+    #end
+
+    #def Users.signup_without_passwords
+    #    @signup_user ||= User.new(email: 'test@test.com', password: '')
+    #    @signup_user
+    #end
 end
 
 class User

@@ -9,3 +9,15 @@ end
 Then(/^I see Appimation home page/) do
     @tests.signup_tests.home_page_visible?
 end
+
+Then(/^I submit signup without specifying email/) do
+    @tests.signup_tests.signup_without_email
+end
+
+Then(/^I see that new account is not created/) do
+    @tests.signup_tests.signup_unsuccessful
+end
+
+Then(/^I submit signup without specifying passwords/) do
+    @tests.signup_tests.signup_without_passwords
+end

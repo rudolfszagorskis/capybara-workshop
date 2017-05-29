@@ -4,10 +4,12 @@ class HomePage < BasePage
     @button_start = Element.new(:id, 'start_button')
     @button_login = Element.new(:id, 'login-b')
     @button_signup = Element.new(:id, 'signup-b')
+    @label_sign_up = Element.new(:xpath, '//div[@id = "signup"]/descendant::h1[contains(text(), "Sign Up")]')
     @input_signup_email = Element.new(:xpath, '//div[@id = "signup"]/descendant::input[@name = "login"]')
     @input_signup_password = Element.new(:xpath, '//div[@id = "signup"]/descendant::input[@name = "password1"]')
     @input_signup_password_again = Element.new(:xpath, '//div[@id = "signup"]/descendant::input[@name = "password2"]')
     @input_signup_project_name = Element.new(:xpath, '//div[@id = "signup"]/descendant::input[@name = "project_name"]')
+    @button_get_started = Element.new(:xpath, '//div[@id = "signup"]/descendant::button[@class = "button-form button-block-form innerButton"]')
     @button_signup_cancel = Element.new(:xpath, '//div[@id = "signup"]/descendant::img[@class = "closecross"]')
     @input_login_email = Element.new(:xpath, '//div[@id = "login"]/descendant::input[@name = "login"]')
     @input_login_password = Element.new(:xpath, '//div[@id = "login"]/descendant::input[@name = "password"]')
@@ -51,11 +53,35 @@ class HomePage < BasePage
     @button_signup_cancel.click
   end
 
+  def get_started
+    @button_get_started.click
+  end
+
   def submit_signup(user)
     enter_signup_email user.email
     enter_signup_passwords user.password
     enter_signup_project_name user.project_name
     cancel_signup
+  end
+
+  def submit_incorrect_signup_no_email(user)
+    enter_signup_passwords user.password
+    enter_signup_project_name user.project_name
+    get_started
+  end
+
+  def submit_incorrect_signup_no_passwords(user)
+    enter_signup_email user.email
+    enter_signup_project_name user.project_name
+    get_started
+  end
+
+  def signup_dialog
+    @label_sign_up.visible?
+    @input_signup_email.visible?
+    @input_signup_password.visible?
+    @input_signup_password_again.visible?
+    @input_signup_project_name.visible?
   end
 
   def click_login

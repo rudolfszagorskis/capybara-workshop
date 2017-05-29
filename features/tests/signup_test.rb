@@ -17,4 +17,18 @@ class SignupTest
     @pages.page_home.visible?
   end
 
+  def signup_without_email
+    @pages.page_home.click_try_now
+    @pages.page_home.submit_incorrect_signup_no_email(Users.signup_user)
+  end
+
+  def signup_without_passwords
+    @pages.page_home.click_try_now
+    @pages.page_home.submit_incorrect_signup_no_passwords(Users.signup_user)
+  end
+
+  def signup_unsuccessful
+    @pages.page_home.signup_dialog
+  end
+
 end
