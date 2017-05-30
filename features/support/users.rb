@@ -15,15 +15,15 @@ module Users
         @login_user_negative
     end
 
-    #def Users.signup_without_email
-    #    @signup_user ||= User.new(email: '', password: 'passworddemo')
-    #    @signup_user
-    #end
+    def Users.signup_without_email
+        @signup_user_without_email ||= User.new(email: '', password: 'passworddemo')
+        @signup_user_without_email
+    end
 
-    #def Users.signup_without_passwords
-    #    @signup_user ||= User.new(email: 'test@test.com', password: '')
-    #    @signup_user
-    #end
+    def Users.signup_without_passwords
+        @signup_user_without_passwords ||= User.new(email: 'test@test.com', password: '')
+        @signup_user_without_passwords
+    end
 end
 
 class User

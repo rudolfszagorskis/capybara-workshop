@@ -19,12 +19,12 @@ class SignupTest
 
   def signup_without_email
     @pages.page_home.click_try_now
-    @pages.page_home.submit_incorrect_signup_no_email(Users.signup_user)
+    @pages.page_home.submit_signup(Users.signup_without_email)
   end
 
   def signup_without_passwords
     @pages.page_home.click_try_now
-    @pages.page_home.submit_incorrect_signup_no_passwords(Users.signup_user)
+    @pages.page_home.submit_signup(Users.signup_without_passwords)
   end
 
   def signup_unsuccessful

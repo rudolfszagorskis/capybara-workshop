@@ -64,17 +64,17 @@ class HomePage < BasePage
     cancel_signup
   end
 
-  def submit_incorrect_signup_no_email(user)
-    enter_signup_passwords user.password
-    enter_signup_project_name user.project_name
-    get_started
-  end
+  #def submit_incorrect_signup_no_email(user)
+  #  enter_signup_passwords user.password
+  #  enter_signup_project_name user.project_name
+  #  get_started
+  #end
 
-  def submit_incorrect_signup_no_passwords(user)
-    enter_signup_email user.email
-    enter_signup_project_name user.project_name
-    get_started
-  end
+  #def submit_incorrect_signup_no_passwords(user)
+  #  enter_signup_email user.email
+  #  enter_signup_project_name user.project_name
+  #  get_started
+  #end
 
   def signup_dialog
     @label_sign_up.visible?
