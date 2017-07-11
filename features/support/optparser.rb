@@ -13,6 +13,8 @@ class Optparse
     options.threads = '2'
     options.report_path = 'report/'
     options.environment = 'prod'
+    options.grid = 'http://10.1.8.177:4444/wd/hub'
+    options.browser = 'GRID-CHROME'
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = 'Usage:ruby main.rb [options]'
@@ -33,6 +35,14 @@ class Optparse
 
       opts.on('-e', '--environment [ENV]', 'Environment [prod/stage]') do |env|
         options.environment = env
+      end
+
+      opts.on('-b', '--browser [CHROME]', 'Browser [CHROME/GRID-CHROME]') do |browser|
+        options.browser = browser
+      end
+
+      opts.on('-g', '--grid [URL]', 'Grid Host [URL]') do |url|
+        options.grid = url
       end
 
       opts.on_tail('-h', '--help', 'Show this message') do

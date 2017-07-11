@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          <NAME>
+# Provides:          Selenium Hub
 # Required-Start:    $local_fs $network $named $time $syslog
 # Required-Stop:     $local_fs $network $named $time $syslog
 # Default-Start:     2 3 4 5
@@ -12,7 +12,7 @@ SCRIPT="selenium-standalone start -- -role hub"
 RUNAS=user
 
 PIDFILE=/var/run/selenium-hub.pid
-LOGFILE=/var/log/selenium-hub.log
+LOGFILE=/var/log/selenium/selenium-hub.log
 
 start() {
   if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then

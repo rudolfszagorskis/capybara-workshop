@@ -1,6 +1,6 @@
 #!/bin/sh
 ### BEGIN INIT INFO
-# Provides:          <NAME>
+# Provides:          Selenium_Node
 # Required-Start:    $local_fs $network $named $time $syslog
 # Required-Stop:     $local_fs $network $named $time $syslog
 # Default-Start:     2 3 4 5
@@ -8,11 +8,11 @@
 # Description:       <DESCRIPTION>
 ### END INIT INFO
 
-SCRIPT="selenium-standalone start -- -role node -hub http://localhost:4444/grid/register"
+SCRIPT='xvfb-run --server-args="-screen 0, 1366x768x24" selenium-standalone start -- -role node -hub http://localhost:4444/grid/register'
 RUNAS=user
 
-PIDFILE=/var/run/selenium-hub.pid
-LOGFILE=/var/log/selenium-hub.log
+PIDFILE=/var/run/selenium-node.pid
+LOGFILE=/var/log/selenium/selenium-node.log
 
 start() {
   if [ -f /var/run/$PIDNAME ] && kill -0 $(cat /var/run/$PIDNAME); then
