@@ -7,49 +7,28 @@ require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'json'
 require 'base64'
-require "chromedriver/helper"
-require_relative 'environment'
+require 'chromedriver/helper'
 
 
 SitePrism.configure do |config|
   config.use_implicit_waits = true
 end
-Capybara.app_host = Environment.public_send(ENV['ENVIRONMENT'])
-Capybara.save_path = ENV['REPORT_PATH']
+Capybara.app_host = 'http://www.apimation.com'
+Capybara.save_path = 'report/'
 Capybara::Screenshot.autosave_on_failure = false
 Capybara::Screenshot.prune_strategy = :keep_last_run
-BROWSER = ENV['BROWSER']
-GRID = ENV['GRID']
-# BROWSER = 'CHROME'
-# GRID = 'http://localhost:4444/wd/hub'
 # =================================================================== #
 #######################################################################
 # ========================= ENVIRONMENT SETUP ========================#
-def set_up_grid(capability)
-    Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app,
-        browser: :remote,
-        url: GRID,
-        desired_capabilities: capability)
-  end
-  Capybara.default_driver = :selenium
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
-if BROWSER == 'CHROME'
-  Capybara.register_driver :selenium do |app|
-      Capybara::Selenium::Driver.new(app, browser: :chrome)
-  end
-  Capybara.default_driver = :selenium
-elsif BROWSER == 'GRID-CHROME'
-  caps = Selenium::WebDriver::Remote::Capabilities.chrome
-  set_up_grid(caps)
-end
+Capybara.default_driver = :selenium
 # =============================================================== #
 #######################################################################
 # ========================= SCENARIO TEARDOWN ========================#
 
 Before do |scenario|
-  @pages = Pages.new
-  @tests = Tests.new(@pages)
   Capybara.current_session.driver.execute_script("window.resizeTo(1920,1080)")
   Capybara.ignore_hidden_elements = false
   Capybara.default_max_wait_time = 30

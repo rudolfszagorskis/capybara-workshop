@@ -1,1 +1,0 @@
-ci: --format <%= ENV['FORMAT'] %> --out <%= ENV['REPORT_PATH'] %>browser<%= ENV['TEST_ENV_NUMBER'] %>.<%= ENV['FORMAT'] %>
