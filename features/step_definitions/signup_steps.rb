@@ -1,8 +1,22 @@
-When(/^I am on Appimation home page/) do
+When(/^I am on Venta home page/) do
   visit('/')
-  find(:css, '#start_button')
-  find(:xpath, "//button[@id = 'start_button']")
-  find(:css, "#video")
-  find(:css, ".feature-image")
-  find(:xpath, "//h3[contains(text(), 'Team up')]/preceding-sibling::img")
+  find(:css, '.l_home')
+end
+
+When(/^I open Pētniecība page/) do
+  find(:css, "a[title='Pētniecība']").click
+end
+
+Then("I see Pētniecības page") do
+  find(:xpath, "//h1[contains(text(), 'Pētniecība')]")
+end
+
+When("I open search menu") do
+  find(:css, ".i_search").click
+  find(:css, "#s")
+end
+
+Then("I enter {string} in search") do |string|
+  find(:css, "#s").set string
+  sleep(4)
 end

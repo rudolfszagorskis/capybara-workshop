@@ -1,4 +1,11 @@
 Feature: Demo Feature
 
-    Scenario: Open SignUp Page
-        Given I am on Appimation home page
+    Scenario: Open Landing Page
+        Given I am on Venta home page
+        When I open Pētniecība page
+        Then I see Pētniecības page
+
+    Scenario: Open Search
+        Given I am on Venta home page
+        When I open search menu
+        Then I enter "info" in search
