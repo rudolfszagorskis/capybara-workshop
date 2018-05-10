@@ -10,4 +10,22 @@ class Element
   def visible?
     find.visible?
   end
+
+  def isVisible
+    unless visible?
+      raise "element not visible"
+    end
+  end
+
+  def click
+    find.click
+  end
+
+  def send_keys(value)
+    find.send_keys value
+  end
+
+  def clear
+    find.native.clear
+  end
 end
