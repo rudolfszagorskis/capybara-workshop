@@ -1,8 +1,10 @@
 When(/^I am on Appimation home page/) do
-  visit('/')
-  unless find(:css, '#logo').visible?
-    raise "Logo not visible"
-  end
+  # visit('/')
+  # unless find(:css, '#logo').visible?
+  #   raise "Logo not visible"
+  # end
+  @pages.page_home.load
+  @pages.page_home.visible?
 end
 
 
