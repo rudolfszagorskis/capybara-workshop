@@ -1,48 +1,51 @@
+
+
 When(/^I am on Appimation home page/) do
-  # visit('/')
-  # unless find(:css, '#logo').visible?
-  #   raise "Logo not visible"
-  # end
   @pages.page_home.load
   @pages.page_home.isVisible
 end
 
-
-
-When(/^I open Try now/) do
-  # find(:css, '#start_button').click
-  # unless find(:css, '#signup').visible?
-  #   raise "element not visible"
-  # end
-  @pages.page_home.openTryNow
+When(/^I open Sign Up/) do
+  @pages.page_home.signup
 end
 
-
-Then("I close Try now") do
-  # find(:css, '#signup .closecross').click
-  @pages.page_home.closeTryNow
+Then(/^I see if Sign Up window is visible/) do
+  @pages.page_home.isVisible
 end
 
-
-When("I enter {string} and {string} in name in contact us") do |name, name2|
-  # unless find(:css, '#name').visible?
-  #   raise "name not visible"
-  # end
-  # find(:css, '#name').send_keys(name)
-  # sleep(2)
-  # find(:css, '#name').native.clear
-  #
-  # find(:css, '#name').send_keys(name2)
-  # sleep(2)
-
-  @pages.page_home.enterName(name)
-  @pages.page_home.clearName
-  sleep(2)
-  @pages.page_home.enterName(name2)
-  sleep(2)
+When(/^I enter all required information1/) do 
+  @pages.page_home.enterInformationn
 end
 
+And (/^I close Sign Up window/) do
+  @pages.page_home.close_signup_window
+end
 
+# Then(/^I see that Sign Up window is closed/) do
+#    @pages.page_home.gg
+# end
 
+##########################################################################################################
+
+When(/^I open Sign In/) do
+  @pages.page_home.login
+end
+
+Then(/^I see if Sign In window is visible/) do
+@pages.page_home.sign_in_window_is_visible
+end
+
+When(/^I enter all required information2/) do 
+  @pages.page_home.enterLoginInformation
+end
+
+And (/^I try to Sign In/) do
+  @pages.page_home.signIn
+  # sleep(3)
+end
+
+Then(/^I see that User has a error/) do
+  @pages.page_home.errorr
+end
 
 
