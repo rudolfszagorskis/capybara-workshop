@@ -3,7 +3,7 @@ When(/^I am on Appimation home page/) do
   # unless find(:css, '#logo').visible?
   #   raise "Logo not visible"
   # end
-  @pages.page_home.load
+  @tests.login_tests.load_home_page
   @pages.page_home.isVisible
 end
 
