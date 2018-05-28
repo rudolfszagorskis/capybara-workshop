@@ -5,6 +5,8 @@ class HomePage < BasePage
     @form_sign_up = Element.new(:css, '#signup')
     @button_close_try_now = Element.new(:css, '#signup .closecross')
     @input_name_contact_us = Element.new(:css, '#name')
+    @input_email_contact_us = Element.new(:css, '#email')
+    @input_message_contact_us = Element.new(:css, '#contactus-message')
   end
 
   def isVisible
@@ -32,5 +34,13 @@ class HomePage < BasePage
 
   def clearName
     @input_name_contact_us.clear
+  end
+
+    def enterEmail(email)
+      @input_email_contact_us.send_keys(email)
+    end
+
+  def enterMessage(message)
+    @input_message_contact_us.send_keys(message)
   end
 end
