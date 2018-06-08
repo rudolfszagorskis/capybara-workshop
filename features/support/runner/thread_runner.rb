@@ -1,7 +1,6 @@
 module ThreadRunner
-  def ThreadRunner.run
-    # `export FORMAT="html" ; export REPORT_PATH="report"`
+  def ThreadRunner.run(option)
+     `export FORMAT=#{option['format']} ; export REPORT_PATH=#{option['path']} ; parallel_cucumber features -n #{option['threads']} -o "HOST=#{option['host']} REPORT_PATH='#{option['path']}' -p ci"`
 
-    `export FORMAT="html" ; export REPORT_PATH="report/" ; parallel_cucumber features -n 2 -o "HOST='https://apimation.com' REPORT_PATH='report/' -p ci"`
   end
 end
