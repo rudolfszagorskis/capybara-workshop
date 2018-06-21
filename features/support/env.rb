@@ -2,17 +2,12 @@ $LOAD_PATH << File.dirname(__FILE__)
 
 require 'capybara/cucumber'
 require 'capybara-screenshot/cucumber'
-require 'site_prism'
 require 'capybara/rspec'
 require 'selenium-webdriver'
 require 'json'
 require 'base64'
 require 'chromedriver/helper'
 
-
-SitePrism.configure do |config|
-  config.use_implicit_waits = true
-end
 # Capybara.app_host = 'http://www.apimation.com'
 print ENV['HOST']
 Capybara.app_host = ENV['HOST']
@@ -36,10 +31,12 @@ def set_up_grid(capability)
 end
 Capybara.default_driver = :selenium
 end
+
 if BROWSER == 'CHROME'
 Capybara.register_driver :selenium do |app|
     Capybara::Selenium::Driver.new(app, browser: :chrome)
 end
+
 Capybara.default_driver = :selenium
 elsif BROWSER == 'GRID-CHROME'
 caps = Selenium::WebDriver::Remote::Capabilities.chrome
