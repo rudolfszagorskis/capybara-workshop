@@ -13,6 +13,9 @@ class Optparse
         options.path = 'report/'
         options.host = "https://apimation.com"
         options.threads = '2'
+        options.grid = 'http://10.0.2.15:4444/wd/hub'
+        options.browser = 'GRID-CHROME'
+
         
         opt_parser = OptionParser.new do |opts|
             opts.banner = 'Usage:ruby main.rb [options]'
