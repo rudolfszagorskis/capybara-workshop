@@ -3,6 +3,7 @@ When(/^I am on Appimation login page/) do
   all(:xpath, "//h3[contains(text(), 'Chain requests with reusable data')]/parent::section/descendant::img").each do |el|
     puts el
   end
+  # test
   # all(:xpath, "//h3[contains(text(), 'Chain requests with reusable data')]").each do |el|
   #               # //*[@id="main"]/section[2]/div[1]/section[1]/img
 

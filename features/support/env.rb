@@ -9,7 +9,7 @@ require 'json'
 require 'base64'
 require "chromedriver/helper"
 
-
+# test
 SitePrism.configure do |config|
   config.use_implicit_waits = true
 end
